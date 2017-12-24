@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function myArray(){
+//        初始化数组
+        for(var i=0;i<arguments.length;i++){
+            this[i]=arguments[i];
+        }
+        this.length=arguments.length
+//        push
+        this.push=function() {
+            for(var i=0;i<arguments.length;i++){
+                this[this.length]=arguments[i];
+                this.length++;
+            }
+        }
+        //       pop
+        this.pop=function(){
+            for(var i=0;i<this.length;i++){
+                var last=this[this.length-1];
+                delete this[this.length-1];
+                --this.length;
+                return last;
+            }
+        }
+//       min
+        this.min=function(){
+            var min=this[0];
+            for(var i=1;i<this.length;i++){
+                if(min>this[i]){
+                    min=this[i]
+                }
+            }
+            return min;
+        }
+
+
+    }
+
+   var array=new myArray(6,9,20,12,2,3,4);
+//        array=[1,2,3,4];
+//    array.push('b');
+//    a=array.pop();
+    mine=array.min()
+    console.log(mine)
+//    console.log(a)
+</script>
+
+</body>
+</html>
